@@ -1,0 +1,24 @@
+{
+  "name": "server.kuaaa.net",
+  "version": "0.1.0",
+  "description": "KUAAA.net Server on Node.js",
+  "main": "src/init.js",
+  "scripts": {
+    "test": "nodemon src/init.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PngWnA/server.kuaaa.net.git"
+  },
+  "keywords": [
+    "KUAAA",
+    "Server",
+    "Nodejs"
+  ],
+  "author": "PngWnA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PngWnA/server.kuaaa.net/issues"
+  },
+  "homepage": "https://github.com/PngWnA/server.kuaaa.net#readme"
+}
