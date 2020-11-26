@@ -8,7 +8,6 @@ const {
 
 /* Mailer Init. */
 
-
 const register = async (req, res, next) => {
   const {
     id, pw, sid, belong, name, email,
