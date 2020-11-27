@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+exports.__esModule = true;
+var express_1 = require("express");
+var account_1 = __importDefault(require("./account"));
+var archive_1 = __importDefault(require("./archive"));
+var blog_1 = __importDefault(require("./blog"));
+var board_1 = __importDefault(require("./board"));
+var gall_1 = __importDefault(require("./gall"));
+var notice_1 = __importDefault(require("./notice"));
+var root_1 = require("./root");
+var router = express_1.Router();
+router.use('/account', account_1["default"]);
+router.use('/archive', archive_1["default"]);
+router.use('/blog', blog_1["default"]);
+router.use('/board', board_1["default"]);
+router.use('/gall', gall_1["default"]);
+router.use('/notice', notice_1["default"]);
+router.get('/', root_1.hello);
+exports["default"] = router;
