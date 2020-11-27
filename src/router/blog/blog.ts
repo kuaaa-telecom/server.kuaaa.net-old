@@ -1,5 +1,10 @@
-const test = (req, res) => {
-  res.send('GET /blog/');
+import { RequestHandler } from "express";
+
+export const test: RequestHandler<{ a: string }, any, { id: string }> = (
+  req,
+  res
+) => {
+  res.send("GET /blog/");
 };
 
-module.exports = { test };
+export default test;
