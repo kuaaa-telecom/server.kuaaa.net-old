@@ -1,10 +1,12 @@
-import {
-  Request, Response, RequestHandler, NextFunction,
-} from 'express';
+import { Request, Response, RequestHandler, NextFunction } from "express";
 
-const msg: String = 'Hello KUAAA.<br>By Pngwna. @ 2020';
+const msg = "Hello KUAAA.<br>By Pngwna. @ 2020";
 
-const hello: RequestHandler = (_req: Request, _res: Response, next: NextFunction) => {
+const hello: RequestHandler = (
+  _req: Request,
+  _res: Response,
+  next: NextFunction
+) => {
   _res.send(msg);
   return next();
 };
