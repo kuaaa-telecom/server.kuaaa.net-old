@@ -6,9 +6,10 @@ import blog from './blog';
 import board from './board';
 import gall from './gall';
 import notice from './notice';
-import hello from './root';
 
-const router: Router = Router();
+import { hello } from './root';
+
+const router = Router();
 
 router.use('/account', account);
 router.use('/archive', archive);
