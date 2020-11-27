@@ -2,7 +2,7 @@
 import Express from 'express';
 import router from './router';
 
-const app: Express.Application = Express();
+const app = Express();
 
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));

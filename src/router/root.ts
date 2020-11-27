@@ -1,14 +1,11 @@
-import { Request, Response, RequestHandler, NextFunction } from "express";
+// Landing page | Main page
+import { RequestHandler } from 'express';
 
-const msg = "Hello KUAAA.<br>By Pngwna. @ 2020";
+const msg = 'Hello KUAAA.<br>By Pngwna. @ 2020';
 
-const hello: RequestHandler = (
-  _req: Request,
-  _res: Response,
-  next: NextFunction
-) => {
-  _res.send(msg);
+const main: RequestHandler = (req, res, next) => {
+  res.send(msg);
   return next();
 };
 
-export default hello;
+export default main;

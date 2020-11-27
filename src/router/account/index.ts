@@ -1,8 +1,6 @@
-const { Router } = require('express');
-const { verifyToken } = require('../../lib/auth');
-const {
-  register, unregister, login, logout, findid, resetpw,
-} = require('./account');
+import { Router } from 'express';
+import { verifyToken } from '../../lib/auth';
+import { register, unregister, login, logout, findid, resetpw } from './account';
 
 const router = Router();
 
@@ -13,4 +11,4 @@ router.post('/logout', verifyToken, logout);
 router.post('/findid', findid);
 router.post('/resetpw', resetpw);
 
-module.exports = router;
+export default router;

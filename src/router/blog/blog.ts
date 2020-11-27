@@ -1,10 +1,10 @@
-import { RequestHandler } from "express";
+import { RequestHandler } from 'express';
 
-export const test: RequestHandler<{ a: string }, any, { id: string }> = (
-  req,
-  res
-) => {
-  res.send("GET /blog/");
+const msg: String = 'GET /blog/';
+
+const test: RequestHandler = (req, res, next) => {
+  res.send(msg);
+  return next();
 };
 
 export default test;

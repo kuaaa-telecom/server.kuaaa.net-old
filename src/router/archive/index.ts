@@ -1,9 +1,8 @@
-const express = require('express');
-const { test } = require('./archive');
+import { Router } from 'express';
+import test from './archive';
 
-const { Router } = express;
 const router = Router();
 
 router.get('/', test);
 
-module.exports = router;
+export default router;

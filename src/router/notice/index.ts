@@ -1,7 +1,6 @@
-import express from 'express';
-import { test } from './notice';
+import { Router } from 'express';
+import test from './notice';
 
-const { Router } = express;
 const router = Router();
 
 router.get('/', test);

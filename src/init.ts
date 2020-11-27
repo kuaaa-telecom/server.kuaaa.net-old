@@ -1,9 +1,9 @@
 // Entry point of KUAAA Server.
 import server from './server';
 
-const port: Number = Number(process.env.PORT) || 31413;
+const port = Number(process.env.PORT) ?? 31413;
 
-const init: String = `
+const init = `
 Hello KUAAA. \n
 Server is listening on 0.0.0.0::${port}.
 `;

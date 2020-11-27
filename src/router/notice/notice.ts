@@ -1,9 +1,9 @@
-import { Request, Response, RequestHandler, NextFunction } from "express";
+import { RequestHandler } from 'express';
 
-const msg: String = "GET /notice/";
+const msg: String = 'GET /notice/';
 
-const test: RequestHandler = (_req, _res, next) => {
-  _res.send(msg);
+const test: RequestHandler = (req, res, next) => {
+  res.send(msg);
   return next();
 };
 

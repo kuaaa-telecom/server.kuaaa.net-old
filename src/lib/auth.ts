@@ -1,8 +1,8 @@
-const crypto = require('crypto');
-const util = require('util');
-const jwt = require('jsonwebtoken');
+import crypto from 'crypto';
+import util from 'util';
+import jwt from 'jsonwebtoken';
 
-const { Expired } = require('./db');
+import { Expired } from './db';
 
 const pbkdf2 = util.promisify(crypto.pbkdf2);
 const randomBytes = util.promisify(crypto.randomBytes);
