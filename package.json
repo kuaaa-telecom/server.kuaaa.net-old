@@ -7,7 +7,9 @@
   "author": "PngWnA <2016320146@korea.ac.kr>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --rs --watch src --notify --respawn src/init.ts"
+    "dev": "ts-node-dev --rs --watch src --notify --respawn src/init.ts",
+    "build": "tsc",
+    "clean": "rm -rf build/*"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
@@ -26,6 +28,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.4.16",
     "typeorm": "^0.2.29"
   }
 }

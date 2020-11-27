@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 
-const msg: String = 'GET /blog/';
+const msg: string = 'GET /blog/';
 
 const test: RequestHandler = (req, res, next) => {
   res.send(msg);
