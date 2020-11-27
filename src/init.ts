@@ -1,7 +1,7 @@
 // Entry point of KUAAA Server.
 import server from './server';
 
-const port = Number(process.env.PORT) ?? 31413;
+const port = process.env.PORT || 31413;
 
 const init = `
 Hello KUAAA. \n
