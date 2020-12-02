@@ -105,3 +105,9 @@ dist
 
 # Dist
 build
+
+# Test DB
+memory
+
+# Dependency
+yarn.lock
