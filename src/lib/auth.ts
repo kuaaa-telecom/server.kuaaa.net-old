@@ -26,6 +26,4 @@ const comparePassword = async (password: string, storedPassword: string) => {
   return Buffer.compare(hashed, digest) === 0;
 };
 
-module.exports = {
-  generatePassword, comparePassword,
-};
+export { generatePassword, comparePassword };
