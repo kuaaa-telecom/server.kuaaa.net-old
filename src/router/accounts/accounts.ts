@@ -13,11 +13,14 @@ const register: RequestHandler = async (req, res, next) => {
     id, pw, sid, belong, name, email,
   } = req.body;
 
+  console.dir(req.body);
+
   // Check if parameters are all set.
-  const params: (String|undefined)[] = [id, pw, sid, belong, name, email];
+  const params = [id, pw, sid, belong, name, email].map((param) => Object.keys(param)[0]);
   const invalid = params.filter((param) => param === undefined);
   if (invalid.length) {
-    const code = '[INVALID] NULL_PARAM';
+    const code = '[INVALID] NULL_PARAMETER';
+    console.dir(invalid);
     const msg = `Following param(s) is(are) null: ${id ? '' : 'id '}${pw ? '' : 'pw '}${sid ? '' : 'sid '}${belong ? '' : 'belong '}${name ? '' : 'name '}${email ? '' : 'email'}`;
     res.status(400).json({ code, msg });
     return next();
@@ -31,7 +34,6 @@ const register: RequestHandler = async (req, res, next) => {
       { email },
     ],
   });
-  // TODO: Check duplication.
 
   // Prepare Query.
   const user = new User();
