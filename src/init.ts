@@ -8,4 +8,6 @@ Hello KUAAA. \n
 Server is listening on 0.0.0.0::${port}.
 `;
 
-server.listen(port, (): void => { console.log(init); });
+server.listen(
+    port, () => console.log(init)
+);
