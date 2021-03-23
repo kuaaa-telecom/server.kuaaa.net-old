@@ -4,7 +4,7 @@
   "description": "KUAAA.net Server on Node.js",
   "main": "src/init.ts",
   "repository": "https://github.com/PngWnA/server.kuaaa.net.git",
-  "author": "PngWnA <2016320146@korea.ac.kr>",
+  "author": "PngWnA <gnu@korea.ac.kr>",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --rs --watch src --notify --respawn src/init.ts",

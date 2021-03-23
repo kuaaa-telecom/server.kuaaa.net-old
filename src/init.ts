@@ -9,5 +9,5 @@ Server is listening on 0.0.0.0::${port}.
 `;
 
 server.listen(
-    port, () => console.log(init)
+  port, () => console.log(init),
 );
