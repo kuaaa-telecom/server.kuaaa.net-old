@@ -20,6 +20,7 @@ const login: RequestHandler = (req, res, next) => {
 };
 
 const test: RequestHandler = async (req, res, next) => {
+  res.status(500).json({"msg":"Something went wrong..."})
   return next();
 };
 

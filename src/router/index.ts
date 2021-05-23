@@ -1,13 +1,5 @@
 import { Router } from 'express';
 
-/* Router structure
-*  / -> main
-*    /auth -> auth
-*    /users -> auth
-*    /articles -> auth
-*    /boards -> auth
-*/
-
 import main from './root';
 
 import auth from './auth';
