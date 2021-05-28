@@ -8,6 +8,7 @@ import User from '../../lib/model/user';
 
 
 const register: RequestHandler = async (req, res, next) => {
+  res.status(500).json({"msg":"Not implemented"});
   return next();
 };
 
