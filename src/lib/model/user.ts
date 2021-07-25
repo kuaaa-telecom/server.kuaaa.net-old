@@ -11,6 +11,9 @@ export default class User {
     id!: string;
 
     @Column()
+    password!: string;
+
+    @Column()
     name!: string;
 
     @Column()

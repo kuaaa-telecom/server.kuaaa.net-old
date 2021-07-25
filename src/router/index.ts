@@ -11,7 +11,7 @@ const router = Router();
 
 router.get('/', main);
 
-router.get('/auth', auth);
+router.use('/auth', auth);
 router.use('/users', users);
 router.use('/articles', articles);
 router.use('/boards', boards);

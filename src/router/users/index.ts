@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { register, unregister, test } from './users';
+import { list } from './users';
+import { verify } from '../auth/auth'
 
 const router = Router();
 
+//router.use('/', verify);
+router.get('/', list);
 
-router.get('/', test);
-router.post('/register', register);
-router.post('/unregister', unregister);
 
 export default router;

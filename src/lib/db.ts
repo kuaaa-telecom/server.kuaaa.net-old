@@ -2,6 +2,7 @@ import { createConnection } from 'typeorm';
 
 import User from './model/user';
 import Auth from './model/auth';
+import ExpiredToken from './model/expiredToken'
 
 const initConnection = async () => {
   await createConnection({
@@ -11,6 +12,7 @@ const initConnection = async () => {
     entities: [
       User,
       Auth,
+      ExpiredToken
     ],
     synchronize: true,
     logging: 'all',
