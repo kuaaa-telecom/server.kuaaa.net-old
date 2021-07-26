@@ -34,22 +34,22 @@
  * @summary Add a new User account to the kuaaa.net DB
  * @param {RegisterForm} request.body.required - Register Form
  * @return {object} 200 - Returns user ID
- * @return {object} 401 - Returns error message for unauthorized request
- * @return {object} 403 - Returns error message for forbidden request of given users
+ * @return {object} 403 - Returns error message for forbidden request 
+ * @return {object} 409 - Returns error message for request that conflict with the server
  * @return {object} 500 - Returns error message for internal server error
  * @example response - 200 - REGISTER_SUCCESS
  * {
  *  "msg": "Registered Successfully",
  *  "id": "wkkjdkkwk778"
  * }
- * @example response - 401 - REGISTER_FAILED
- * {
- *  "error": "REGISTER_FAILED",
- *  "msg": "Input ID is already in use."
- * }
  * @example response - 403 - Forbidden
  * {
  *  "msg":"Forbidden request"
+ * }
+ * @example response - 409 - REGISTER_FAILED
+ * {
+ *  "error": "REGISTER_FAILED",
+ *  "msg": "Input ID is already in use."
  * }
  * @example response - 500 - Internal Server error
  * {
@@ -63,21 +63,21 @@
  * @summary Unregister existing User
  * @param {UnregisterForm} request.body.required - Unregister Form
  * @return {object} 200 - Returns success message
- * @return {object} 401 - Returns error message for unauthorized request
- * @return {object} 403 - Returns error message for forbidden request of given users
+ * @return {object} 403 - Returns error message for forbidden request 
+ * @return {object} 409 - Returns error message for request that of given users
  * @return {object} 500 - Returns error message for internal server error
  * @example response - 200 - UNREGISTER_SUCCESS
  * {
  *  "msg": "Unregister Successfully"
  * }
- * @example response - 401 - UNREGISTER_FAILED
- * {
- *  "error": "UNREGISTER_FAILED",
- *  "msg": "Username does not exist"
- * }
  * @example response - 403 - Forbidden
  * {
  *  "msg":"Forbidden request"
+ * } 
+ * @example response - 409 - UNREGISTER_FAILED
+ * {
+ *  "error": "UNREGISTER_FAILED",
+ *  "msg": "Username does not exist"
  * }
  * @example response - 500 - Internal Server error
  * {
@@ -92,7 +92,8 @@
  * @param {LoginForm} request.body.required - Login Form
  * @return {object} 200 - Returns authorized jwt token
  * @return {object} 401 - Returns error message for unauthorized request
- * @return {object} 403 - Returns error message for forbidden request of given users
+ * @return {object} 403 - Returns error message for forbidden request 
+ * @return {object} 409 - Returns error message for request that of given users
  * @return {object} 500 - Returns error message for internal server error
  * @example response - 200 - LOGIN_SUCCESS
  * {
@@ -105,14 +106,14 @@
  *  "error": "LOGIN_FAILED",
  *  "msg": "Wrong password.."
  * }
- * @example response - 401 - LOGIN_FAILED
- * {
- *  "error": "LOGIN_FAILED",
- *  "msg": "Username does not exist."
- * }
  * @example response - 403 - Forbidden
  * {
  *  "msg":"Forbidden request"
+ * }
+ * @example response - 409 - LOGIN_FAILED
+ * {
+ *  "error": "LOGIN_FAILED",
+ *  "msg": "Username does not exist."
  * }
  * @example response - 500 - Internal Server error
  * {

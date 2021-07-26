@@ -41,7 +41,7 @@ const register: RequestHandler = async (req, res, next) => {
             "id": uid
         });
         }
-        else throw new CustomError('REGISTER_FAILED', 401, 'Input ID is already in use.');
+        else throw new CustomError('REGISTER_FAILED', 409, 'Input ID is already in use.');
     } catch(err){
         next(err);
     }
@@ -56,7 +56,7 @@ const unregister: RequestHandler = async (req, res, next) => {
             row!.isActive = false;
             getRepository(User).save(row);
             res.status(200).json({"msg":"Unregister Successfully"});
-        }else throw new CustomError('UNREGISTER_FAILED', 401, 'Username does not exist');
+        }else throw new CustomError('UNREGISTER_FAILED', 409, 'Username does not exist');
     } catch (err) {
         next(err);
     }
@@ -83,7 +83,7 @@ const login: RequestHandler = async (req, res, next) => {
                 token: token
                 });
             } else throw new CustomError('LOGIN_FAILED', 401, 'Wrong password.');
-        } else throw new CustomError('LOGIN_FAILED', 401, 'Username does not exist.');
+        } else throw new CustomError('LOGIN_FAILED', 409, 'Username does not exist.');
     }catch (err) {
         next(err);
     }
