@@ -99,7 +99,7 @@
  * {
  *  "msg": "Login Successfully",
  *  "id": "wkkjdkkwk778",
- *  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJzc2tkaWJta201NTQ3IiwiaWF0IjoxNjI3MjA2MjYyLCJleHAiOjE2Mjc4MTEwNjIsImlzcyI6Imt1YWFhLm5ldCIsInN1YiI6IlVzZXIgSW5mby4ifQ.CSZgkrynztRxt0Qsz69msWt1NUj62eSQIEuXhb4J814"
+ *  "token": "(Authorized JWT Token)"
  * }
  * @example response - 401 - LOGIN_FAILED
  * {
