@@ -1,0 +1,5 @@
+trailingComma: 'es5'
+tabWidth: 2
+# 지금 세미콜론 붙이고있길래 일단 true로 (default=false)
+semi: true
+singleQuote: true
