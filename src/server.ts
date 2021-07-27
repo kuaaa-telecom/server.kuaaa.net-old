@@ -5,7 +5,7 @@ import jsdoc from 'express-jsdoc-swagger';
 import initConnection from './lib/db';
 import router from './router';
 
-
+import { CustomError } from './lib/error';
 
 // DB
 initConnection();
@@ -53,5 +53,16 @@ const options = {
     swaggerUiOptions: {},
   };
 jsdoc(app)(options);
+
+
+app.use((err, req, res, next) => {
+  console.error(err);
+
+  if(err instanceof CustomError) return res.status(err.status).json({
+    error: err.code,
+    msg: err.message
+  });
+  else res.status(500).send({msg : 'Something went wrong...'});
+})
 
 export default app;

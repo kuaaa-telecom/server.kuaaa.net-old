@@ -1,30 +1,17 @@
 import { RequestHandler } from 'express';
-import { getConnection } from 'typeorm';
+import { getRepository } from 'typeorm';
 
-import { generatePassword, comparePassword } from '../../lib/auth';
-
-import Auth from '../../lib/model/auth';
 import User from '../../lib/model/user';
 
-
-const register: RequestHandler = async (req, res, next) => {
-  res.status(500).json({"msg":"Not implemented"});
-  return next();
-};
-
-const unregister: RequestHandler = (req, res, next) => {
-  return next();
-};
-
-const login: RequestHandler = (req, res, next) => {
-  return next();
-};
-
-const test: RequestHandler = async (req, res, next) => {
-  res.status(500).json({"msg":"Something went wrong..."})
-  return next();
+//TODO: should check permission to call this method
+const list: RequestHandler = async (req, res, next) => {
+  const userList: User[] = await getRepository(User).find();
+  console.log(userList);
+  const va = userList[0];
+  res.status(200).json(userList);
+  
 };
 
 export {
-  register, unregister, test, login,
+  list
 };
