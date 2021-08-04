@@ -4,6 +4,8 @@ import User from './model/user';
 import Auth from './model/auth';
 import ExpiredToken from './model/expiredToken'
 
+import Article from './model/article';
+
 const initConnection = async () => {
   await createConnection({
     type: 'sqlite',
@@ -12,7 +14,8 @@ const initConnection = async () => {
     entities: [
       User,
       Auth,
-      ExpiredToken
+      ExpiredToken,
+      Article,
     ],
     synchronize: true,
     logging: 'all',
