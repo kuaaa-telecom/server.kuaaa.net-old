@@ -9,9 +9,6 @@ const list: RequestHandler = async (req, res, next) => {
   console.log(userList);
   const va = userList[0];
   res.status(200).json(userList);
-  
 };
 
-export {
-  list
-};
+export { list };

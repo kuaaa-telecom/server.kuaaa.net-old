@@ -1,4 +1,3 @@
-
 # Guide to onboard TypeScript
 
 ## 1. 초기 설정
@@ -21,7 +20,6 @@
   - @types/node
   - @types/express
 
-
 ### 1-3. lint
 
 ## 2. 사용해보기
@@ -37,6 +35,3 @@
 ### 3-4. deno
 
 ## 4. 트러블슈팅
-
-
-

@@ -2,9 +2,9 @@ import { Entity, PrimaryColumn, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export default class ExpiredToken {
-    @PrimaryColumn()
-    token!: string;
+  @PrimaryColumn()
+  token!: string;
 
-    @CreateDateColumn()
-    createdAt!: Date;
+  @CreateDateColumn()
+  createdAt!: Date;
 }

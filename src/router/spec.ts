@@ -1,6 +1,6 @@
 /**
  * GET /
- * @summary This is the root path of API Server 
+ * @summary This is the root path of API Server
  * @return {object} 200 - Hello message from server if it is working.
  * @example response - 200 - Hello message
  * {

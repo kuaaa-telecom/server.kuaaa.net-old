@@ -18,11 +18,14 @@ const generatePassword = async (password: string) => {
   const ALGO = 'sha512';
   const salt = await randomBytes(16);
   const digest = await pbkdf2(password, salt, ITER, KEY_LEN, ALGO);
-  return `${ALGO}:${salt.toString('base64')}:${ITER}:${KEY_LEN}:${digest.toString('base64')}`;
+  return `${ALGO}:${salt.toString(
+    'base64'
+  )}:${ITER}:${KEY_LEN}:${digest.toString('base64')}`;
 };
 
 const comparePassword = async (password: string, storedPassword: string) => {
-  const [algo, encodedSalt, iterStr, keylenStr, encodedDigest] = storedPassword.split(':');
+  const [algo, encodedSalt, iterStr, keylenStr, encodedDigest] =
+    storedPassword.split(':');
   const iter = parseInt(iterStr, 10);
   const keylen = parseInt(keylenStr, 10);
   const salt = Buffer.from(encodedSalt, 'base64');
@@ -32,10 +35,10 @@ const comparePassword = async (password: string, storedPassword: string) => {
 };
 
 const signJWT = (uid: number): string => {
-  try{
+  try {
     const token = jwt.sign(
       {
-        uid
+        uid,
       },
       jwtSecret,
       {
@@ -45,22 +48,24 @@ const signJWT = (uid: number): string => {
       }
     );
     return token;
-  }catch (err) {
+  } catch (err) {
     throw new Error('SIGN_FAILED');
   }
 };
 
 const verifyJWT = async (token: string) => {
-  try{
+  try {
     const decoded = jwt.verify(token, jwtSecret);
     console.log(decoded);
-    //왜 string이면 안되는지...?
-    if(typeof decoded === 'string') throw new Error('type is string');
-    const rows = await getRepository(ExpiredToken).findOne({where: {token}});
-    if (rows !== undefined) throw new CustomError('VERIFY_ERROR', 401, 'Token is Expired.');
+    if (typeof decoded === 'string') throw new Error('type is string');
+    const rows = await getRepository(ExpiredToken).findOne({
+      where: { token },
+    });
+    if (rows !== undefined)
+      throw new CustomError('VERIFY_ERROR', 401, 'Token is Expired.');
     return decoded;
-  }catch (err) {
-    if(err instanceof CustomError) throw err;
+  } catch (err) {
+    if (err instanceof CustomError) throw err;
     throw new Error('VERIFY_ERROR');
   }
 };

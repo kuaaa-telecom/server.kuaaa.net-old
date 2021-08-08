@@ -34,7 +34,7 @@
  * @summary Add a new User account to the kuaaa.net DB
  * @param {RegisterForm} request.body.required - Register Form
  * @return {object} 200 - Returns user ID
- * @return {object} 403 - Returns error message for forbidden request 
+ * @return {object} 403 - Returns error message for forbidden request
  * @return {object} 409 - Returns error message for request that conflict with the server
  * @return {object} 500 - Returns error message for internal server error
  * @example response - 200 - REGISTER_SUCCESS
@@ -63,7 +63,7 @@
  * @summary Unregister existing User
  * @param {UnregisterForm} request.body.required - Unregister Form
  * @return {object} 200 - Returns success message
- * @return {object} 403 - Returns error message for forbidden request 
+ * @return {object} 403 - Returns error message for forbidden request
  * @return {object} 409 - Returns error message for request that of given users
  * @return {object} 500 - Returns error message for internal server error
  * @example response - 200 - UNREGISTER_SUCCESS
@@ -73,7 +73,7 @@
  * @example response - 403 - Forbidden
  * {
  *  "msg":"Forbidden request"
- * } 
+ * }
  * @example response - 409 - UNREGISTER_FAILED
  * {
  *  "error": "UNREGISTER_FAILED",
@@ -92,7 +92,7 @@
  * @param {LoginForm} request.body.required - Login Form
  * @return {object} 200 - Returns authorized jwt token
  * @return {object} 401 - Returns error message for unauthorized request
- * @return {object} 403 - Returns error message for forbidden request 
+ * @return {object} 403 - Returns error message for forbidden request
  * @return {object} 409 - Returns error message for request that of given users
  * @return {object} 500 - Returns error message for internal server error
  * @example response - 200 - LOGIN_SUCCESS
