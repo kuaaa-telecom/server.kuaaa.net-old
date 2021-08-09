@@ -1,19 +1,21 @@
-import multer from 'multer';
+import path from 'path';
 
 import { RequestHandler } from 'express';
 
 const msg: string = 'GET /images/';
-const imageSave = multer({
-  dest: 'image',
-});
-
-interface MulterRequest extends Request {
-  file: any;
-}
 
 const addImage: RequestHandler = async (req, res, next) => {
+  console.log(req.file);
   res.send(msg + 'addImage');
   return next();
+};
+
+const getImage: RequestHandler = async (req, res, next) => {
+  const { id } = req.params;
+  const dirname = path.resolve();
+  const fullPath = path.join(dirname, 'src/res/image/' + id);
+  console.log(fullPath);
+  return res.status(200).sendFile(fullPath);
 };
 
 const test: RequestHandler = (req, res, next) => {
@@ -21,4 +23,4 @@ const test: RequestHandler = (req, res, next) => {
   return next();
 };
 
-export { test, addImage };
+export { test, addImage, getImage };
