@@ -1,10 +1,9 @@
 import path from 'path';
 
+import { CustomError } from '../../lib/error';
 import { RequestHandler } from 'express';
 import Image from '../../lib/model/image';
 import { getRepository } from 'typeorm';
-
-const msg: string = 'GET /images/';
 
 const addImage: RequestHandler = async (req, res, next) => {
   try {
@@ -26,7 +25,12 @@ const addImage: RequestHandler = async (req, res, next) => {
         mimetype: mimetype,
         size: size,
       });
-    } else throw new Error(); //TODO
+    } else
+      throw new CustomError(
+        'BAD_REQUEST',
+        400,
+        'Image does not exist in request'
+      );
   } catch (err) {
     next(err);
   }
@@ -43,7 +47,12 @@ const getImage: RequestHandler = async (req, res, next) => {
       const dirname = path.resolve();
       const fullPath = path.join(dirname, row.path);
       return res.status(200).type(row.mimetype).sendFile(fullPath);
-    } else throw new Error('no way'); //TODO
+    } else
+      throw new CustomError(
+        'IMAGE_NOT_FOUND',
+        404,
+        'Image id does not exist in DB'
+      );
   } catch (err) {
     next(err);
   }
@@ -51,9 +60,4 @@ const getImage: RequestHandler = async (req, res, next) => {
   return next();
 };
 
-const test: RequestHandler = (req, res, next) => {
-  res.send(msg);
-  return next();
-};
-
-export { test, addImage, getImage };
+export { addImage, getImage };
