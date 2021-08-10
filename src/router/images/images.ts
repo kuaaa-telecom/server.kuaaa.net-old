@@ -5,25 +5,18 @@ import { RequestHandler } from 'express';
 import Image from '../../lib/model/image';
 import { getRepository } from 'typeorm';
 
-const addImage: RequestHandler = async (req, res, next) => {
+const upLoadImage: RequestHandler = async (req, res, next) => {
   try {
-    if (req.file !== undefined) {
-      const { mimetype, size, path } = req.file;
-      const id = req.file.filename;
-
-      const image: Image = await getRepository(Image).create({
-        id: id,
-        path: path,
-        mimetype: mimetype,
-        size: size,
-      });
-      getRepository(Image).save(image);
+    if (req.files !== undefined) {
+      const size = req.files.length;
+      let imageInfo: any[] = [];
+      console.log(req.files);
+      for (let i = 0; i < size; ++i)
+        imageInfo[i] = await saveImage(req.files[i]);
+      console.log(imageInfo);
       res.status(200).json({
         msg: 'Image Saved Successfully',
-        id: id,
-        path: path,
-        mimetype: mimetype,
-        size: size,
+        imageInfo: imageInfo,
       });
     } else
       throw new CustomError(
@@ -36,6 +29,21 @@ const addImage: RequestHandler = async (req, res, next) => {
   }
 
   return next();
+};
+
+const saveImage = async (file) => {
+  const { mimetype, size, path } = file;
+  const id = file.filename;
+
+  const image: Image = await getRepository(Image).create({
+    id: id,
+    path: path,
+    mimetype: mimetype,
+    size: size,
+  });
+  getRepository(Image).save(image);
+
+  return { id: id, path: path, mimetype: mimetype, size: size };
 };
 
 const getImage: RequestHandler = async (req, res, next) => {
@@ -60,4 +68,4 @@ const getImage: RequestHandler = async (req, res, next) => {
   return next();
 };
 
-export { addImage, getImage };
+export { upLoadImage, getImage };
