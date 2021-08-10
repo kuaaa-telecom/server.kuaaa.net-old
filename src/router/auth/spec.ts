@@ -7,6 +7,7 @@
  * @property {string} sid
  * @property {string} belong
  * @property {string} email
+ * @property {string} profileImageId
  */
 
 /**

@@ -29,6 +29,9 @@ export default class User {
   @Column()
   email!: string;
 
+  @Column({ default: null })
+  profileImageId!: string;
+
   @Column({ default: true })
   isActive!: boolean;
 

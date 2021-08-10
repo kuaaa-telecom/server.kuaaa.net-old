@@ -30,14 +30,16 @@ const register: RequestHandler = async (req, res, next) => {
     if (row === undefined) {
       const password: string = req.body.password;
       const encryptedPassword = await generatePassword(password);
+      const { name, sid, belong, email, profileImageId } = req.body;
 
       const user: User = await getRepository(User).create({
         id: uid,
         password: encryptedPassword,
-        name: req.body.name,
-        sid: req.body.sid,
-        belong: req.body.belong,
-        email: req.body.email,
+        name: name,
+        sid: sid,
+        belong: belong,
+        email: email,
+        profileImageId: profileImageId,
       });
       getRepository(User).save(user);
       res.status(200).json({
