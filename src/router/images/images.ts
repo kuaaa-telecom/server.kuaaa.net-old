@@ -7,13 +7,11 @@ import { getRepository } from 'typeorm';
 
 const uploadImage: RequestHandler = async (req, res, next) => {
   try {
-    if (req.files !== undefined) {
-      const size = req.files.length;
-      let imageInfo: any[] = [];
-      console.log(req.files);
-      for (let i = 0; i < size; ++i)
-        imageInfo[i] = await saveImage(req.files[i]);
-      console.log(imageInfo);
+    if (req.files && Array.isArray(req.files)) {
+      const imageInfo = await Promise.all(
+        req.files.map((file) => saveImage(file))
+      );
+
       res.status(200).json({
         msg: 'Image Saved Successfully',
         imageInfo: imageInfo,
