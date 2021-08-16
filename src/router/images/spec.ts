@@ -19,13 +19,11 @@
  *  "imageInfo": [
  *       {
  *         "id": "fad6c4b32695ff7e0a35f27fd42ba7b9",
- *         "path": "src\\res\\image\\fad6c4b32695ff7e0a35f27fd42ba7b9",
  *          "mimetype": "image/jpeg",
  *          "size": 873901
  *       },
  *       {
  *          "id": "7c90a0d3684b49b68330c57013b6bed4",
- *          "path": "src\\res\\image\\7c90a0d3684b49b68330c57013b6bed4",
  *          "mimetype": "image/png",
  *          "size": 113429
  *       }

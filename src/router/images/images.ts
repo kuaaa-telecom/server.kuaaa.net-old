@@ -37,13 +37,13 @@ const saveImage = async (file) => {
 
   const image: Image = await getRepository(Image).create({
     id: id,
-    path: path,
     mimetype: mimetype,
+    path: path,
     size: size,
   });
   getRepository(Image).save(image);
 
-  return { id: id, path: path, mimetype: mimetype, size: size };
+  return { id: id, mimetype: mimetype, size: size };
 };
 
 const getImage: RequestHandler = async (req, res, next) => {
