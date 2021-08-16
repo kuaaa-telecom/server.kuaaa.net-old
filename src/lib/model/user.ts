@@ -4,7 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
+  OneToOne,
 } from 'typeorm';
+import Image from './image';
 
 @Entity()
 export default class User {
@@ -29,8 +32,9 @@ export default class User {
   @Column()
   email!: string;
 
-  @Column({ default: null })
-  profileImageId!: string;
+  @OneToOne(() => Image)
+  @JoinColumn()
+  profileImage!: Image;
 
   @Column({ default: true })
   isActive!: boolean;

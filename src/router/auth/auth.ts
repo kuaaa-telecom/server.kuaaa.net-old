@@ -11,6 +11,7 @@ import {
 
 import User from '../../lib/model/user';
 import ExpiredToken from '../../lib/model/expiredToken';
+import Image from '../../lib/model/image';
 
 const verify: RequestHandler = async (req, res, next) => {
   try {
@@ -31,6 +32,7 @@ const register: RequestHandler = async (req, res, next) => {
       const password: string = req.body.password;
       const encryptedPassword = await generatePassword(password);
       const { name, sid, belong, email, profileImageId } = req.body;
+      const profileImage = await getProfileImage(profileImageId);
 
       const user: User = await getRepository(User).create({
         id: uid,
@@ -39,7 +41,7 @@ const register: RequestHandler = async (req, res, next) => {
         sid: sid,
         belong: belong,
         email: email,
-        profileImageId: profileImageId,
+        profileImage: profileImage,
       });
       getRepository(User).save(user);
       res.status(200).json({
@@ -56,6 +58,25 @@ const register: RequestHandler = async (req, res, next) => {
     next(err);
   }
   return next();
+};
+
+const getProfileImage = async (profileImageId: string | undefined) => {
+  try {
+    if (profileImageId !== undefined) {
+      const imageRow = await getRepository(Image).findOne({
+        where: { id: profileImageId },
+      });
+      if (imageRow !== undefined) return imageRow;
+      else
+        throw new CustomError(
+          'REGISTER_FAILED',
+          409,
+          'There is No image corresponding to ProfileImageId'
+        );
+    } else return undefined;
+  } catch (err) {
+    throw err;
+  }
 };
 
 const unregister: RequestHandler = async (req, res, next) => {
