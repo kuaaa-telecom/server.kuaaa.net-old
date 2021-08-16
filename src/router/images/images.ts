@@ -5,7 +5,7 @@ import { RequestHandler } from 'express';
 import Image from '../../lib/model/image';
 import { getRepository } from 'typeorm';
 
-const upLoadImage: RequestHandler = async (req, res, next) => {
+const uploadImage: RequestHandler = async (req, res, next) => {
   try {
     if (req.files !== undefined) {
       const size = req.files.length;
@@ -68,4 +68,4 @@ const getImage: RequestHandler = async (req, res, next) => {
   return next();
 };
 
-export { upLoadImage, getImage };
+export { uploadImage, getImage };
