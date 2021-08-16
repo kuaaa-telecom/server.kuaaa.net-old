@@ -57,7 +57,8 @@ const verifyJWT = async (token: string) => {
   try {
     const decoded = jwt.verify(token, jwtSecret);
     console.log(decoded);
-    if (typeof decoded === 'string') throw new Error('type is string');
+    if (typeof decoded === 'string')
+      throw new CustomError('VERIFY_ERROR', 500, 'Type should not be string');
     const rows = await getRepository(ExpiredToken).findOne({
       where: { token },
     });

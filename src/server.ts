@@ -57,7 +57,7 @@ jsdoc(app)(options);
 app.use((err, req, res, next) => {
   console.error(err);
 
-  if (err instanceof CustomError)
+  if (err instanceof CustomError && err.status != 500)
     return res.status(err.status).json({
       error: err.code,
       msg: err.message,
